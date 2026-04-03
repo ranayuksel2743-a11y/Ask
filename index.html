@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Belilyon'a ve Ranbilyon'a ait.</title>
+    <style>
+        body {
+            background-color: #fff5e1;
+            color: #333;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1, h2 {
+            color: #ff4d88;
+        }
+
+        .kutu {
+            background-color: #1a2a6c;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 500px;
+            color: white;
+        }
+
+        .foto-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        img {
+            width: 45%;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        textarea {
+            width: 80%;
+            height: 100px;
+            border-radius: 10px;
+            background-color: #ffe4e1;
+            color: #333;
+        }
+
+        button {
+            background-color:#ff6b81;
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color:#ff4d88;
+            color: #fff;
+        }
+
+        #giris {
+            margin-top: 100px;
+        }
+
+        #sifre {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Şifreli Giriş -->
+    <div id="giris">
+        <h2>Siteye giriş için şifre:</h2>
+        <input type="password" id="sifre" placeholder="Şifreyi gir">
+        <button onclick="kontrol()">Giriş</button>
+    </div>
+
+    <!-- Ana Site İçeriği -->
+    <div id="site" style="display:none;">
+
+        <h1> Bizim Sitemiz </h1>
+
+        <div class="kutu">
+            <h2> Fotoğraflarımız</h2>
+            <div class="foto-container">
+                <img src="Biz/1.jpg" alt="foto1">
+                <img src="Biz/2.jpg" alt="foto2">
+                <img src="Biz/3.jpg" alt="foto3">
+                <img src="Biz/4.jpg" alt="foto4">
+            </div>
+        </div>
+
+        <div class="kutu">
+            <h2> Kaç gün beraber büyüdük?</h2>
+            <p id="sayac"></p>
+        </div>
+
+        <div class="kutu">
+            <h2> Not bırakınız...</h2>
+            <textarea id="not" placeholder="Buraya yaz"></textarea>
+        </div>
+
+        <button onclick="notuSifirla()">Notu Sıfırla</button>
+
+        <!-- Arka planda şarkı -->
+        <iframe width="0" height="0" 
+        src="https://www.youtube.com/embed/7G4h7uWg0vY?autoplay=1&loop=1&playlist=7G4h7uWg0vY"
+        frameborder="0" allow="autoplay"></iframe>
+
+    </div>
+
+    <script>
+        // Şifre kontrolü
+        function kontrol() {
+            var sifre = document.getElementById("sifre").value;
+            if(sifre === "0537") {
+                document.getElementById("giris").style.display = "none";
+                document.getElementById("site").style.display = "block";
+            } else {
+                alert("Şifre yanlış!");
+            }
+        }
+
+        // Aşk sayacı
+        var baslangic = new Date("2025-07-11");
+        var bugun = new Date();
+        var fark = bugun - baslangic;
+        var gun = Math.floor(fark / (1000 * 60 * 60 * 24));
+        document.getElementById("sayac").innerText = gun + " gün";
+
+        // Not saklama
+        var alan = document.getElementById("not");
+        alan.value = localStorage.getItem("not") || "";
+
+        alan.addEventListener("input", function() {
+            localStorage.setItem("not", alan.value);
+        });
+
+        function notuSifirla() {
+            alan.value = "";
+            localStorage.removeItem("not");
+        }
+    </script>
+
+</body>
+</html>
