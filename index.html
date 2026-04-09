@@ -76,6 +76,25 @@
             border: 1px solid #ccc;
         }
     </style>
+.foto-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.foto-container img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.foto-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
 </head>
 <body>
 
@@ -94,16 +113,16 @@
         <div class="kutu">
             <h2> Fotoğraflarımız</h2>
             <div class="foto-container">
-                <img src="Biz/Foto1.jpeg" alt="foto1">
-                <img src="Biz/Foto2.jpeg" alt="foto2">
-                <img src="Biz/Foto3.jpeg" alt="foto3">
-                <img src="Biz/Foto4.jpeg" alt="foto4">
-                <img src="Biz/Foto5.jpeg" alt="foto5">
-                <img src="Biz/Foto6.jpeg" alt="foto6"> 
-                <img src="Biz/Foto7.jpeg" alt="foto7">
-                <img src="Biz/Foto8.jpeg" alt="foto8">
-                <img src="Biz/Foto9.jpeg" alt="foto9">     
-                <img src="Biz/Foto10.jpeg" alt="foto10">
+                <img src="Biz/Foto1.jpeg" onclick="buyut(this.src)">
+                <img src="Biz/Foto2.jpeg" onclik="buyut(this.src)">
+                <img src="Biz/Foto3.jpeg" onclik="buyut(this.src)">
+                <img src="Biz/Foto4.jpeg" onclik="buyut(this.src)">
+                <img src="Biz/Foto5.jpeg" onclik="buyut(this.src)">
+                <img src="Biz/Foto6.jpeg" onclik="buyut(this.src)"> 
+                <img src="Biz/Foto7.jpeg" onclik="buyut(this.src)">
+                <img src="Biz/Foto8.jpeg" onclik="buyut(this.src)">
+                <img src="Biz/Foto9.jpeg" onclik="buyut(this.src)">     
+                <img src="Biz/Foto10.jpeg" onclik="buyut(this.src)"> 
             </div>
         </div>
 
@@ -158,6 +177,17 @@
             localStorage.removeItem("not");
         }
     </script>
+<div id="buyut" onclick="kapat()" 
+style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center;">
+    <img id="buyukFoto" style="max-width:90%; max-height:90%; border-radius:15px;">
+    function buyut(src) {
+    document.getElementById("buyut").style.display = "flex";
+    document.getElementById("buyukFoto").src = src;
+}
 
+function kapat() {
+    document.getElementById("buyut").style.display = "none";
+}
+</div>
 </body>
 </html>
