@@ -74,27 +74,36 @@
             font-size: 16px;
             border-radius: 8px;
             border: 1px solid #ccc;
-        }
+    }
         .zarf {
     position: relative;
-    width: 250px;
+    width: 260px;
     height: 180px;
     margin: 20px auto;
-    background: white;
-    border-radius: 10px;
     cursor: pointer;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-.kapak {
+.zarf-govde {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #fff;
-    clip-path: polygon(0 0, 100% 0, 50% 60%);
+    background: white;
+    border-radius: 10px;
+    z-index: 1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.zarf-ust {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    clip-path: polygon(0 0, 100% 0, 50% 50%);
+    transform-origin: top;
     transition: 0.5s;
-    z-index: 2;
+    z-index: 3;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .kalp {
@@ -103,19 +112,22 @@
     right: 15px;
     color: red;
     font-size: 20px;
-    z-index: 3;
+    z-index: 4;
 }
 
 .mektup {
     position: absolute;
     bottom: -100%;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    left: 5%;
+    height: 160px;
     background: #ffe4e1;
     padding: 15px;
     box-sizing: border-box;
-    text-align: left;
+    border-radius: 10px;
     transition: 0.5s;
+    z-index: 2;
+    color: #0b1a4a;
 }
     </style>}  
 </head>
@@ -164,7 +176,9 @@
                 Hayatımın Elzemine,<br><br>
                 Bitanem öncelikle iyi ki varsın.<br>
                 Bugün senin kutladığımız ilk doğum günün. Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen.
-                Elzemim içimde ki varoluştan gelen eksik yanımın en güzel tamamlayıcı parçasısın sen. Her sene beraber senin yeniden doğuşunla benim seninle yaşamamı kutlayacağız. Seni çok seviyorum iyi ki doğdun, iyi ki benim oldun.
+                ElzemiM,
+                İçimde ki varoluştan gelen eksik yanımın en güzel tamamlayıcı parçasısın sen.
+                Her sene beraber senin yeniden doğuşunla benim seninle yaşamamı kutlayacağız. Seni çok seviyorum iyi ki doğdun, iyi ki benim oldun.
                 .<br><br>
                 Doğum günün kutlu olsunnn ❤️
             </p>
@@ -181,7 +195,7 @@
         <!-- Müzik buraya eklenecek -->
 <audio id="muzik" controls loop>
   <source src="muzik.mp3" type="audio/mpeg">
-</audio>https://youtu.be/uQGrXRjDxAg?si=R_DGxqt41aVIJrPm
+</audio>
     </div>
 
     <script>
@@ -216,8 +230,8 @@
             localStorage.removeItem("not");
         }
      function zarfAc() {
-    document.querySelector(".kapak").style.transform = "translateY(-100%)";
-    document.getElementById("mektup").style.bottom = "0";
+    document.querySelector(".zarf-ust").style.transform = "rotateX (180%)";
+    document.getElementById("mektup").style.bottom = "10";
 }   
     </script>
 </div>
