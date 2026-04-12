@@ -75,14 +75,51 @@
             border-radius: 8px;
             border: 1px solid #ccc;
 </script>
+            
+</html>
+    </style>}  
+</head>
+<body>
 
-</body> 
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<title>İçinde yaşattığın küçüğüm'e</title>
+    <!-- Şifreli Giriş -->
+    <div id="giris">
+        <h2>Siteye giriş için şifre:</h2>
+        <input type="password" id="sifre" placeholder="Şifreyi gir">
+        <button onclick="kontrol()">Giriş</button>
+    </div>
+    <!-- Ana Site İçeriği -->
+    <div id="site" style="display:none;">
 
+        <h1> Bizim Sitemiz </h1>
+
+        <div class="kutu">
+            <h2> Fotoğraflarımız</h2>
+            <div class="foto-container">
+                <img src="Biz/Foto1.jpeg" onclick="buyut(this.src)">
+                <img src="Biz/Foto2.jpeg" onclik="buyut(this.src)">
+                <img src="Biz/Foto3.jpeg" onclik="buyut(this.src)">
+                <img src="Biz/Foto4.jpeg" onclik="buyut(this.src)">
+                <img src="Biz/Foto5.jpeg" onclik="buyut(this.src)">
+                <img src="Biz/Foto6.jpeg" onclik="buyut(this.src)"> 
+                <img src="Biz/Foto7.jpeg" onclik="buyut(this.src)">
+                <img src="Biz/Foto8.jpeg" onclik="buyut(this.src)">
+                <img src="Biz/Foto9.jpeg" onclik="buyut(this.src)">     
+                <img src="Biz/Foto10.jpeg" onclik="buyut(this.src)"> 
+            </div>
+        </div>
+
+        <div class="kutu">
+            <h2> Kaç gün beraber büyüdük?</h2>
+            <p id="sayac"></p>
+        </div>
+<div class="kutu">
+    <h2>İçinde yaşattığın küçüğüm'e</h2>
+
+    <div class="zarf" onclick="zarfAc()">
+        <div class="kapak"></div>
+        <div class="kalp">❤</div>
+        <div class="mektup" id="mektup">
+            <p>
 <style>
 body {
     margin: 0;
@@ -180,15 +217,14 @@ body {
 </div>
 
 <script>
-const message = `Hayatımın Elzemine,
+const message =Hayatımın Elzemine,
                 Bitanem öncelikle iyi ki varsın.
                 Bugün senin kutladığımız ilk doğum günün.
                 Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen.
                 Elzemim,
                 İçimde ki varoluştan gelen eksik yanımın en güzel tamamlayıcı parçasısın sen.
-                Her sene beraber senin yeniden doğuşunla benim seninle yaşamamı kutlayacağız. 
+                Her sene beraber senin yeniden doğuşunla benim seninle yaşamamı kutlayacağız.
                 Seni çok seviyorum iyi ki doğdun, iyi ki benim oldun.
-                
 
 let i = 0;
 let started = false;
@@ -213,44 +249,7 @@ function openLetter(el) {
 </script>
 
 </body>
-</html>     
 </html>
-    </style>}  
-</head>
-<body>
-
-    <!-- Şifreli Giriş -->
-    <div id="giris">
-        <h2>Siteye giriş için şifre:</h2>
-        <input type="password" id="sifre" placeholder="Şifreyi gir">
-        <button onclick="kontrol()">Giriş</button>
-    </div>
-    <!-- Ana Site İçeriği -->
-    <div id="site" style="display:none;">
-
-        <h1> Bizim Sitemiz </h1>
-
-        <div class="kutu">
-            <h2> Fotoğraflarımız</h2>
-            <div class="foto-container">
-                <img src="Biz/Foto1.jpeg" onclick="buyut(this.src)">
-                <img src="Biz/Foto2.jpeg" onclik="buyut(this.src)">
-                <img src="Biz/Foto3.jpeg" onclik="buyut(this.src)">
-                <img src="Biz/Foto4.jpeg" onclik="buyut(this.src)">
-                <img src="Biz/Foto5.jpeg" onclik="buyut(this.src)">
-                <img src="Biz/Foto6.jpeg" onclik="buyut(this.src)"> 
-                <img src="Biz/Foto7.jpeg" onclik="buyut(this.src)">
-                <img src="Biz/Foto8.jpeg" onclik="buyut(this.src)">
-                <img src="Biz/Foto9.jpeg" onclik="buyut(this.src)">     
-                <img src="Biz/Foto10.jpeg" onclik="buyut(this.src)"> 
-            </div>
-        </div>
-
-        <div class="kutu">
-            <h2> Kaç gün beraber büyüdük?</h2>
-            <p id="sayac"></p>
-        </div>
-
         <div class="kutu">
             <h2> Not bırakınız...</h2>
             <textarea id="not" placeholder="Buraya yaz bitanem"></textarea>
@@ -273,7 +272,7 @@ function openLetter(el) {
                 document.getElementById("site").style.display = "block";
             } else {
                 alert("Şifre yanlış!");
-            }
+            
         }
 
         // Aşk sayacı
@@ -299,6 +298,8 @@ function openLetter(el) {
     document.querySelector(".zarf-ust").style.transform = "rotateX (180%)";
     document.getElementById("mektup").style.bottom = "10";
 }   
+
+            
     </script>
 </div>
 </body>
