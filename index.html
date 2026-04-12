@@ -74,61 +74,143 @@
             font-size: 16px;
             border-radius: 8px;
             border: 1px solid #ccc;
-    }
-        .zarf {
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>İçinde yaşattığın küçüğüm'e</title>
+
+<style>
+body {
+    margin: 0;
+    background: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Zarf */
+.envelope {
     position: relative;
-    width: 260px;
-    height: 180px;
-    margin: 20px auto;
+    width: 320px;
+    height: 220px;
+    background: #1e3a8a;
+    border-radius: 12px;
     cursor: pointer;
-}
-
-.zarf-govde {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: white;
-    border-radius: 10px;
-    z-index: 1;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.zarf-ust {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: white;
-    clip-path: polygon(0 0, 100% 0, 50% 50%);
-    transform-origin: top;
+    overflow: hidden;
     transition: 0.5s;
-    z-index: 3;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
 }
 
-.kalp {
+/* Üst kapak */
+.envelope::before {
+    content: "";
     position: absolute;
-    top: 10px;
-    right: 15px;
-    color: red;
-    font-size: 20px;
-    z-index: 4;
-}
-
-.mektup {
-    position: absolute;
-    bottom: -100%;
-    width: 90%;
-    left: 5%;
-    height: 160px;
-    background: #ffe4e1;
-    padding: 15px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    transition: 0.5s;
+    top: 0;
+    left: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 110px solid #1e3a8a;
     z-index: 2;
-    color: #0b1a4a;
 }
+
+/* Kalp */
+.heart {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    z-index: 3;
+}
+
+/* Mektup */
+.letter {
+    position: absolute;
+    bottom: -220px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 180px;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-y: auto;
+    transition: 0.6s;
+    z-index: 1;
+}
+
+/* Açılınca */
+.envelope.open .letter {
+    bottom: 20px;
+}
+
+/* Yazı */
+#text {
+    color: #1e3a8a;
+}
+
+/* Yanıp sönen imleç */
+#text::after {
+    content: "|";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openLetter(this)">
+    <div class="heart">❤️</div>
+
+    <div class="letter">
+        <p id="text"></p>
+    </div>
+</div>
+
+<script>
+const message = `Hayatımın Elzemine,
+                Bitanem öncelikle iyi ki varsın.
+                Bugün senin kutladığımız ilk doğum günün. Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen.
+                Elzemim,
+                İçimde ki varoluştan gelen eksik yanımın en güzel tamamlayıcı parçasısın sen.
+                Her sene beraber senin yeniden doğuşunla benim seninle yaşamamı kutlayacağız.
+                Seni çok seviyorum iyi ki doğdun, iyi ki benim oldun.
+                
+
+let i = 0;
+let started = false;
+const speed = 40;
+
+function typeWriter() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+function openLetter(el) {
+    el.classList.toggle("open");
+
+    if (!started) {
+        typeWriter();
+        started = true;
+    }
+}
+</script>
+
+</body>
+</html>
     </style>}  
 </head>
 <body>
@@ -139,7 +221,6 @@
         <input type="password" id="sifre" placeholder="Şifreyi gir">
         <button onclick="kontrol()">Giriş</button>
     </div>
-
     <!-- Ana Site İçeriği -->
     <div id="site" style="display:none;">
 
@@ -165,26 +246,7 @@
             <h2> Kaç gün beraber büyüdük?</h2>
             <p id="sayac"></p>
         </div>
-<div class="kutu">
-    <h2> İçinde yaşattığın küçüğüm'e </h2>
 
-    <div class="zarf" onclick="zarfAc()">
-        <div class="kapak"></div>
-        <div class="kalp">❤</div>
-        <div class="mektup" id="mektup">
-            <p>
-                Hayatımın Elzemine,<br><br>
-                Bitanem öncelikle iyi ki varsın.<br>
-                Bugün senin kutladığımız ilk doğum günün. Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen.
-                ElzemiM,
-                İçimde ki varoluştan gelen eksik yanımın en güzel tamamlayıcı parçasısın sen.
-                Her sene beraber senin yeniden doğuşunla benim seninle yaşamamı kutlayacağız. Seni çok seviyorum iyi ki doğdun, iyi ki benim oldun.
-                .<br><br>
-                Doğum günün kutlu olsunnn ❤️
-            </p>
-        </div>
-    </div>
-</div>
         <div class="kutu">
             <h2> Not bırakınız...</h2>
             <textarea id="not" placeholder="Buraya yaz bitanem"></textarea>
