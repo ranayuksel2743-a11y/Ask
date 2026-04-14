@@ -1,98 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
 <title>Belilyon ve Ranbilyon'a ait.</title>
 
 <style>
-body {
-    background:linear-gradient(135deg,#fff5e1,#ffd6e0);
-    text-align:center;
-    font-family:Arial;
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#fff5e1,#ffd6e0);
+text-align:center;
 }
 
-.kutu {
-    background:#1a2a6c;
-    color:white;
-    padding:20px;
-    margin:20px auto;
-    border-radius:20px;
-    width:90%;
-    max-width:600px;
+/* GİRİŞ */
+#giris{
+margin-top:100px;
+}
+
+input{
+padding:10px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+button{
+padding:10px 15px;
+border:none;
+border-radius:10px;
+background:#ff6b81;
+color:white;
+cursor:pointer;
+}
+
+/* KART */
+.kutu{
+background:#ffffffcc;
+backdrop-filter:blur(10px);
+margin:20px auto;
+padding:20px;
+border-radius:20px;
+width:90%;
+max-width:600px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
 /* FOTO */
-.foto-container {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-    gap:10px;
+.foto-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:10px;
+}
+.foto-container img{
+width:100%;
+height:140px;
+object-fit:cover;
+border-radius:10px;
 }
 
-.foto-container img {
-    width:100%;
-    height:140px;
-    object-fit:cover;
-    border-radius:10px;
+/* SAYAÇ */
+.sayac-box{
+font-size:20px;
+font-weight:bold;
+color:#ff4d88;
 }
 
 /* ZARF */
-.zarf {
-    width:260px;
-    height:170px;
-    margin:auto;
-    position:relative;
-    cursor:pointer;
+.zarf{
+width:280px;
+height:180px;
+margin:auto;
+position:relative;
+cursor:pointer;
 }
 
-.zarf-ust {
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:white;
-    clip-path: polygon(0 0,100% 0,50% 50%);
-    transition:0.6s;
+.zarf-ust{
+position:absolute;
+width:100%;
+height:100%;
+background:white;
+clip-path:polygon(0 0,100% 0,50% 50%);
+transition:0.6s;
+z-index:2;
 }
 
-.mektup {
-    position:absolute;
-    bottom:-100%;
-    width:90%;
-    left:5%;
-    background:#ffe4e1;
-    padding:15px;
-    color:#0b1a4a;
-    border-radius:10px;
-    transition:0.6s;
-    text-align:left;
+.zarf-alt{
+position:absolute;
+width:100%;
+height:100%;
+background:white;
+border-radius:10px;
+z-index:1;
 }
 
-/* oyun */
-canvas {background:black;}
-
-/* kalp */
-#kalp {
-    position:absolute;
-    font-size:30px;
-    cursor:pointer;
+.mektup{
+position:absolute;
+bottom:-100%;
+left:5%;
+width:90%;
+background:#ffe4e1;
+padding:15px;
+border-radius:10px;
+transition:0.6s;
+color:#0b1a4a;
 }
 
-/* hafıza */
-#hafiza {
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
+/* NOT */
+textarea{
+width:90%;
+height:120px;
+border-radius:10px;
+padding:10px;
 }
 
-.kart {
-    width:70px;
-    height:70px;
-    background:#fff;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:24px;
-    cursor:pointer;
+/* OYUN MENÜ */
+#oyunMenu{
+display:none;
+}
+
+/* KALP */
+#kalp{
+position:absolute;
+font-size:30px;
+cursor:pointer;
+}
+
+/* HAFIZA */
+#hafiza{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+}
+.kart{
+background:white;
+height:60px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* NİŞAN */
+#hedef{
+width:50px;
+height:50px;
+background:red;
+border-radius:50%;
+position:relative;
+margin:auto;
+cursor:pointer;
 }
 </style>
 </head>
@@ -100,16 +156,15 @@ canvas {background:black;}
 <body>
 
 <div id="giris">
-<h2>Şifre</h2>
-<input type="password" id="sifre">
+<h2>Şifre gir</h2>
+<input type="password" id="sifre" onkeydown="if(event.key==='Enter') kontrol()">
 <button onclick="kontrol()">Giriş</button>
 </div>
 
 <div id="site" style="display:none;">
 
-<h1>Bizim Sitemiz.</h1>
+<h1>Bizim Sitemiz</h1>
 
-<!-- FOTO -->
 <div class="kutu">
 <h2>Fotoğraflar</h2>
 <div class="foto-container">
@@ -117,76 +172,73 @@ canvas {background:black;}
 <img src="Biz/Foto2.jpeg">
 <img src="Biz/Foto3.jpeg">
 <img src="Biz/Foto4.jpeg">
-<img src="Biz/Foto5.jpeg">
-<img src="Biz/Foto6.jpeg">
-<img src="Biz/Foto7.jpeg">
-<img src="Biz/Foto8.jpeg">
-<img src="Biz/Foto9.jpeg">
-<img src="Biz/Foto10.jpeg">
 </div>
 </div>
 
-<!-- SAYAÇ -->
 <div class="kutu">
-<p id="sayac"></p>
+<h2>Beraber Geçen Süre</h2>
+<div class="sayac-box" id="sayac"></div>
 </div>
 
-<!-- MEKTUP -->
 <div class="kutu">
-<h2>İçinde yaattığın küçüğüm'e</h2>
+<h2>İçinde yaşattığın küçüğüm'e</h2>
 <div class="zarf" onclick="zarfAc()">
+<div class="zarf-alt"></div>
 <div class="zarf-ust"></div>
 
 <div class="mektup" id="mektup">
 Hayatımın Elzemine,<br><br>
 Bitanem öncelikle iyi ki varsın.<br><br>
-Bugün senin kutladığımız ilk doğum günün. Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen.<br><br>
+Bugün senin kutladığımız ilk doğum günün. Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen<br><br>
 Elzemim,<br>
-İçimdeki eksik yanımın en güzel tamamlayıcı parçasısın sen.<br><br>
-Her sene beraber senin yeniden doğuşunla benim seninle yaşamamı kutlayacağız.<br><br>
-Seni çok seviyorum iyi ki doğdun 🤍❤️‍🩹
+İçimdeki eksik yanımın en güzel tamamlayıcı parçası sen.<br><br>
+Her sene beraber senin yeniden doğuşunla benim seninle yaşamamı kutlayacağız. <br><br>
+Seni Belilyonlar kadar çok seviyorum, iyi ki doğdun, iyi ki benim oldun 🤍❤️‍🩹
 </div>
 </div>
 </div>
 
-<!-- SNAKE -->
 <div class="kutu">
-<h2>Snake 🐍</h2>
+<button onclick="oyunAc()">🎮 Oyunları Aç</button>
+</div>
+
+<div id="oyunMenu">
+
+<div class="kutu">
+<h2>Snake</h2>
 <canvas id="snake" width="300" height="300"></canvas>
 </div>
 
-<!-- KALP -->
 <div class="kutu">
-<h2>Kalp Yakala ❤️</h2>
+<h2>Kalp Yakala</h2>
 <p>Puan: <span id="puan">0</span></p>
 <div id="kalp">❤️</div>
 </div>
 
-<!-- HAFIZA -->
 <div class="kutu">
-<h2>Hafıza Oyunu 🧠</h2>
-<div id="hafiza"></div>
+<h2>Nişan</h2>
+<div id="hedef" onclick="vur()"></div>
+<p id="score"></p>
 </div>
 
-<!-- NİŞAN -->
-<div class="kutu">
-<h2>Nişan 🎯</h2>
-<button onclick="alert('Aferim askim')">Ateş Et</button>
 </div>
 
-<!-- NOT -->
 <div class="kutu">
+<h2>Not</h2>
 <textarea id="not"></textarea>
-<button onclick="notuSifirla()">Sıfırla</button>
 </div>
 
-<audio controls>
+<div class="kutu">
+<button onclick="muzikCal()">🎵 Müziği Başlat</button>
+<audio id="muzik">
 <source src="muzik.mp3">
 </audio>
+</div>
 
 </div>
 
 <script>
+
 // giriş
 function kontrol(){
 if(sifre.value=="0537"){
@@ -196,7 +248,10 @@ site.style.display="block";
 }
 
 // sayaç
-sayac.innerText=Math.floor((new Date()-new Date("2025-07-11"))/(1000*60*60*24))+" gün";
+setInterval(()=>{
+let gun=Math.floor((new Date()-new Date("2025-07-11"))/(1000*60*60*24));
+sayac.innerText=gun+" gün geçti 💙";
+},1000);
 
 // zarf
 function zarfAc(){
@@ -204,78 +259,46 @@ document.querySelector(".zarf-ust").style.transform="rotateX(180deg)";
 mektup.style.bottom="10px";
 }
 
+// oyun menü
+function oyunAc(){
+oyunMenu.style.display="block";
+}
+
 // snake
-let c=snake,ctx=c.getContext("2d");
-let s=[{x:150,y:150}],dx=10,dy=0;
-document.addEventListener("keydown",e=>{
-if(e.key=="ArrowUp"){dx=0;dy=-10;}
-if(e.key=="ArrowDown"){dx=0;dy=10;}
-if(e.key=="ArrowLeft"){dx=-10;dy=0;}
-if(e.key=="ArrowRight"){dx=10;dy=0;}
-});
+let ctx=snake.getContext("2d");
+let x=150,y=150;
 setInterval(()=>{
 ctx.clearRect(0,0,300,300);
-let head={x:s[0].x+dx,y:s[0].y+dy};
-s.unshift(head);
-s.pop();
-s.forEach(p=>ctx.fillRect(p.x,p.y,10,10));
+ctx.fillRect(x,y,10,10);
+x+=5;
 },100);
 
-// kalp oyunu
+// kalp
 let puan=0;
 kalp.onclick=()=>{
 puan++;
-document.getElementById("puan").innerText=puan;
+puanText=document.getElementById("puan");
+puanText.innerText=puan;
 kalp.style.left=Math.random()*200+"px";
 kalp.style.top=Math.random()*200+"px";
 };
 
-// HAFIZA PRO
-let kartDegerleri=["❤️","⭐","🎵","💙","🔥","🌙","🍀","💎"];
-let kartlar=[...kartDegerleri,...kartDegerleri];
-kartlar.sort(()=>Math.random()-0.5);
-
-let secilen=[];
-let kilit=false;
-
-kartlar.forEach(deger=>{
-let kart=document.createElement("div");
-kart.className="kart";
-kart.dataset.deger=deger;
-
-kart.onclick=()=>{
-if(kilit||kart.innerText!="") return;
-
-kart.innerText=deger;
-secilen.push(kart);
-
-if(secilen.length===2){
-kilit=true;
-
-if(secilen[0].dataset.deger===secilen[1].dataset.deger){
-secilen=[];
-kilit=false;
-}else{
-setTimeout(()=>{
-secilen[0].innerText="";
-secilen[1].innerText="";
-secilen=[];
-kilit=false;
-},800);
+// nişan
+let skor=0;
+function vur(){
+skor++;
+score.innerText="Skor: "+skor;
+hedef.style.left=Math.random()*200+"px";
+hedef.style.top=Math.random()*200+"px";
 }
-}
-};
-
-hafiza.appendChild(kart);
-});
 
 // not
-let alan=document.getElementById("not");
-alan.value=localStorage.getItem("not")||"";
-alan.oninput=()=>localStorage.setItem("not",alan.value);
-function notuSifirla(){
-alan.value="";
-localStorage.removeItem("not");
+not.value=localStorage.getItem("not")||"";
+not.oninput=()=>localStorage.setItem("not",not.value);
+
+// müzik
+function muzikCal(){
+muzik.play();
 }
 </script>
 
