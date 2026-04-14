@@ -1,306 +1,283 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Belilyon'a ve Ranbilyon'a ait.</title>
-    <style>
-        body {
-            background-color: #fff5e1;
-            color: #333;
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
+<meta charset="UTF-8">
+<title>Belilyon ve Ranbilyon'a ait.</title>
 
-        h1, h2 {
-            color: #ff4d88;
-        }
-
-        .kutu {
-            background-color: #1a2a6c;
-            padding: 20px;
-            margin: 20px auto;
-            border-radius: 15px;
-            width: 80%;
-            max-width: 500px;
-            color: white;
-        }
-
-        .foto-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        img {
-            width: 45%;
-            border-radius: 15px;
-            transition: 0.3s;
-        }
-
-        img:hover {
-            transform: scale(1.05);
-        }
-
-        textarea {
-            width: 80%;
-            height: 100px;
-            border-radius: 10px;
-            background-color: #ffe4e1;
-            color: #333;
-        }
-
-        button {
-            background-color:#ff6b81;
-            color: #1a1a1a;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background-color:#ff4d88;
-            color: #fff;
-        }
-
-        #giris {
-            margin-top: 100px;
-        }
-
-        #sifre {
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-</script>
-            
-</html>
-    </style>}  
-</head>
-<body>
-
-    <!-- Şifreli Giriş -->
-    <div id="giris">
-        <h2>Siteye giriş için şifre:</h2>
-        <input type="password" id="sifre" placeholder="Şifreyi gir">
-        <button onclick="kontrol()">Giriş</button>
-    </div>
-    <!-- Ana Site İçeriği -->
-    <div id="site" style="display:none;">
-
-        <h1> Bizim Sitemiz </h1>
-
-        <div class="kutu">
-            <h2> Fotoğraflarımız</h2>
-            <div class="foto-container">
-                <img src="Biz/Foto1.jpeg" onclick="buyut(this.src)">
-                <img src="Biz/Foto2.jpeg" onclik="buyut(this.src)">
-                <img src="Biz/Foto3.jpeg" onclik="buyut(this.src)">
-                <img src="Biz/Foto4.jpeg" onclik="buyut(this.src)">
-                <img src="Biz/Foto5.jpeg" onclik="buyut(this.src)">
-                <img src="Biz/Foto6.jpeg" onclik="buyut(this.src)"> 
-                <img src="Biz/Foto7.jpeg" onclik="buyut(this.src)">
-                <img src="Biz/Foto8.jpeg" onclik="buyut(this.src)">
-                <img src="Biz/Foto9.jpeg" onclik="buyut(this.src)">     
-                <img src="Biz/Foto10.jpeg" onclik="buyut(this.src)"> 
-            </div>
-        </div>
-
-        <div class="kutu">
-            <h2> Kaç gün beraber büyüdük?</h2>
-            <p id="sayac"></p>
-        </div>
-<div class="kutu">
-    <h2>İçinde yaşattığın küçüğüm'e</h2>
-
-    <div class="zarf" onclick="zarfAc()">
-        <div class="kapak"></div>
-        <div class="kalp">❤</div>
-        <div class="mektup" id="mektup">
-            <p>
 <style>
 body {
-    margin: 0;
-    background: #f3f4f6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background:linear-gradient(135deg,#fff5e1,#ffd6e0);
+    text-align:center;
+    font-family:Arial;
 }
 
-/* Zarf */
-.envelope {
-    position: relative;
-    width: 320px;
-    height: 220px;
-    background: #1e3a8a;
-    border-radius: 12px;
-    cursor: pointer;
-    overflow: hidden;
-    transition: 0.5s;
+.kutu {
+    background:#1a2a6c;
+    color:white;
+    padding:20px;
+    margin:20px auto;
+    border-radius:20px;
+    width:90%;
+    max-width:600px;
 }
 
-/* Üst kapak */
-.envelope::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-left: 160px solid transparent;
-    border-right: 160px solid transparent;
-    border-top: 110px solid #1e3a8a;
-    z-index: 2;
+/* FOTO */
+.foto-container {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:10px;
 }
 
-/* Kalp */
-.heart {
-    position: absolute;
-    top: 90px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 22px;
-    z-index: 3;
+.foto-container img {
+    width:100%;
+    height:140px;
+    object-fit:cover;
+    border-radius:10px;
 }
 
-/* Mektup */
-.letter {
-    position: absolute;
-    bottom: -220px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 280px;
-    height: 180px;
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    font-size: 14px;
-    line-height: 1.5;
-    overflow-y: auto;
-    transition: 0.6s;
-    z-index: 1;
+/* ZARF */
+.zarf {
+    width:260px;
+    height:170px;
+    margin:auto;
+    position:relative;
+    cursor:pointer;
 }
 
-/* Açılınca */
-.envelope.open .letter {
-    bottom: 20px;
+.zarf-ust {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:white;
+    clip-path: polygon(0 0,100% 0,50% 50%);
+    transition:0.6s;
 }
 
-/* Yazı */
-#text {
-    color: #1e3a8a;
+.mektup {
+    position:absolute;
+    bottom:-100%;
+    width:90%;
+    left:5%;
+    background:#ffe4e1;
+    padding:15px;
+    color:#0b1a4a;
+    border-radius:10px;
+    transition:0.6s;
+    text-align:left;
 }
 
-/* Yanıp sönen imleç */
-#text::after {
-    content: "|";
-    animation: blink 1s infinite;
+/* oyun */
+canvas {background:black;}
+
+/* kalp */
+#kalp {
+    position:absolute;
+    font-size:30px;
+    cursor:pointer;
 }
 
-@keyframes blink {
-    0% {opacity: 1;}
-    50% {opacity: 0;}
-    100% {opacity: 1;}
+/* hafıza */
+#hafiza {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.kart {
+    width:70px;
+    height:70px;
+    background:#fff;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="envelope" onclick="openLetter(this)">
-    <div class="heart">❤️</div>
+<div id="giris">
+<h2>Şifre</h2>
+<input type="password" id="sifre">
+<button onclick="kontrol()">Giriş</button>
+</div>
 
-    <div class="letter">
-        <p id="text"></p>
-    </div>
+<div id="site" style="display:none;">
+
+<h1>Bizim Sitemiz.</h1>
+
+<!-- FOTO -->
+<div class="kutu">
+<h2>Fotoğraflar</h2>
+<div class="foto-container">
+<img src="Biz/Foto1.jpeg">
+<img src="Biz/Foto2.jpeg">
+<img src="Biz/Foto3.jpeg">
+<img src="Biz/Foto4.jpeg">
+<img src="Biz/Foto5.jpeg">
+<img src="Biz/Foto6.jpeg">
+<img src="Biz/Foto7.jpeg">
+<img src="Biz/Foto8.jpeg">
+<img src="Biz/Foto9.jpeg">
+<img src="Biz/Foto10.jpeg">
+</div>
+</div>
+
+<!-- SAYAÇ -->
+<div class="kutu">
+<p id="sayac"></p>
+</div>
+
+<!-- MEKTUP -->
+<div class="kutu">
+<h2>İçinde yaattığın küçüğüm'e</h2>
+<div class="zarf" onclick="zarfAc()">
+<div class="zarf-ust"></div>
+
+<div class="mektup" id="mektup">
+Hayatımın Elzemine,<br><br>
+Bitanem öncelikle iyi ki varsın.<br><br>
+Bugün senin kutladığımız ilk doğum günün. Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen.<br><br>
+Elzemim,<br>
+İçimdeki eksik yanımın en güzel tamamlayıcı parçasısın sen.<br><br>
+Her sene beraber senin yeniden doğuşunla benim seninle yaşamamı kutlayacağız.<br><br>
+Seni çok seviyorum iyi ki doğdun 🤍❤️‍🩹
+</div>
+</div>
+</div>
+
+<!-- SNAKE -->
+<div class="kutu">
+<h2>Snake 🐍</h2>
+<canvas id="snake" width="300" height="300"></canvas>
+</div>
+
+<!-- KALP -->
+<div class="kutu">
+<h2>Kalp Yakala ❤️</h2>
+<p>Puan: <span id="puan">0</span></p>
+<div id="kalp">❤️</div>
+</div>
+
+<!-- HAFIZA -->
+<div class="kutu">
+<h2>Hafıza Oyunu 🧠</h2>
+<div id="hafiza"></div>
+</div>
+
+<!-- NİŞAN -->
+<div class="kutu">
+<h2>Nişan 🎯</h2>
+<button onclick="alert('Aferim askim')">Ateş Et</button>
+</div>
+
+<!-- NOT -->
+<div class="kutu">
+<textarea id="not"></textarea>
+<button onclick="notuSifirla()">Sıfırla</button>
+</div>
+
+<audio controls>
+<source src="muzik.mp3">
+</audio>
+
 </div>
 
 <script>
-const message =Hayatımın Elzemine,
-                Bitanem öncelikle iyi ki varsın.
-                Bugün senin kutladığımız ilk doğum günün.
-                Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen.
-                Elzemim,
-                İçimde ki varoluştan gelen eksik yanımın en güzel tamamlayıcı parçasısın sen.
-                Her sene beraber senin yeniden doğuşunla benim seninle yaşamamı kutlayacağız.
-                Seni çok seviyorum iyi ki doğdun, iyi ki benim oldun.
-
-let i = 0;
-let started = false;
-const speed = 40;
-
-function typeWriter() {
-    if (i < message.length) {
-        document.getElementById("text").innerHTML += message.charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
-    }
+// giriş
+function kontrol(){
+if(sifre.value=="0537"){
+giris.style.display="none";
+site.style.display="block";
+}
 }
 
-function openLetter(el) {
-    el.classList.toggle("open");
+// sayaç
+sayac.innerText=Math.floor((new Date()-new Date("2025-07-11"))/(1000*60*60*24))+" gün";
 
-    if (!started) {
-        typeWriter();
-        started = true;
-    }
+// zarf
+function zarfAc(){
+document.querySelector(".zarf-ust").style.transform="rotateX(180deg)";
+mektup.style.bottom="10px";
+}
+
+// snake
+let c=snake,ctx=c.getContext("2d");
+let s=[{x:150,y:150}],dx=10,dy=0;
+document.addEventListener("keydown",e=>{
+if(e.key=="ArrowUp"){dx=0;dy=-10;}
+if(e.key=="ArrowDown"){dx=0;dy=10;}
+if(e.key=="ArrowLeft"){dx=-10;dy=0;}
+if(e.key=="ArrowRight"){dx=10;dy=0;}
+});
+setInterval(()=>{
+ctx.clearRect(0,0,300,300);
+let head={x:s[0].x+dx,y:s[0].y+dy};
+s.unshift(head);
+s.pop();
+s.forEach(p=>ctx.fillRect(p.x,p.y,10,10));
+},100);
+
+// kalp oyunu
+let puan=0;
+kalp.onclick=()=>{
+puan++;
+document.getElementById("puan").innerText=puan;
+kalp.style.left=Math.random()*200+"px";
+kalp.style.top=Math.random()*200+"px";
+};
+
+// HAFIZA PRO
+let kartDegerleri=["❤️","⭐","🎵","💙","🔥","🌙","🍀","💎"];
+let kartlar=[...kartDegerleri,...kartDegerleri];
+kartlar.sort(()=>Math.random()-0.5);
+
+let secilen=[];
+let kilit=false;
+
+kartlar.forEach(deger=>{
+let kart=document.createElement("div");
+kart.className="kart";
+kart.dataset.deger=deger;
+
+kart.onclick=()=>{
+if(kilit||kart.innerText!="") return;
+
+kart.innerText=deger;
+secilen.push(kart);
+
+if(secilen.length===2){
+kilit=true;
+
+if(secilen[0].dataset.deger===secilen[1].dataset.deger){
+secilen=[];
+kilit=false;
+}else{
+setTimeout(()=>{
+secilen[0].innerText="";
+secilen[1].innerText="";
+secilen=[];
+kilit=false;
+},800);
+}
+}
+};
+
+hafiza.appendChild(kart);
+});
+
+// not
+let alan=document.getElementById("not");
+alan.value=localStorage.getItem("not")||"";
+alan.oninput=()=>localStorage.setItem("not",alan.value);
+function notuSifirla(){
+alan.value="";
+localStorage.removeItem("not");
 }
 </script>
 
-</body>
-</html>
-        <div class="kutu">
-            <h2> Not bırakınız...</h2>
-            <textarea id="not" placeholder="Buraya yaz bitanem"></textarea>
-        </div>
-
-        <button onclick="notuSifirla()">Notu Sıfırla</button>
-
-        <!-- Müzik buraya eklenecek -->
-<audio id="muzik" controls loop>
-  <source src="muzik.mp3" type="audio/mpeg">
-</audio>
-    </div>
-
-    <script>
-        // Şifre kontrolü
-        function kontrol() {
-            var sifre = document.getElementById("sifre").value;
-            if(sifre === "0537") {
-                document.getElementById("giris").style.display = "none";
-                document.getElementById("site").style.display = "block";
-            } else {
-                alert("Şifre yanlış!");
-            
-        }
-
-        // Aşk sayacı
-        var baslangic = new Date("2025-07-11");
-        var bugun = new Date();
-        var fark = bugun - baslangic;
-        var gun = Math.floor(fark / (1000 * 60 * 60 * 24));
-        document.getElementById("sayac").innerText = gun + " gün";
-
-        // Not saklama
-        var alan = document.getElementById("not");
-        alan.value = localStorage.getItem("not") || "";
-
-        alan.addEventListener("input", function() {
-            localStorage.setItem("not", alan.value);
-        });
-
-        function notuSifirla() {
-            alan.value = "";
-            localStorage.removeItem("not");
-        }
-     function zarfAc() {
-    document.querySelector(".zarf-ust").style.transform = "rotateX (180%)";
-    document.getElementById("mektup").style.bottom = "10";
-}   
-
-            
-    </script>
-</div>
 </body>
 </html>
