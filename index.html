@@ -12,29 +12,23 @@ background:linear-gradient(135deg,#fff5e1,#ffd6e0);
 text-align:center;
 }
 
-h1{color:#ff4d88;}
+/* GİRİŞ */
+#giris{margin-top:120px;}
+input{
+padding:10px;
+border-radius:10px;
+border:1px solid #ccc;
+}
 
+/* KUTU */
 .kutu{
 background:white;
 margin:20px auto;
 padding:20px;
 border-radius:20px;
 width:90%;
-max-width:600px;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
-}
-
-/* FOTO */
-.foto-container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-gap:10px;
-}
-.foto-container img{
-width:100%;
-height:140px;
-object-fit:cover;
-border-radius:10px;
+max-width:700px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
 /* SAYAÇ */
@@ -45,36 +39,30 @@ font-weight:bold;
 }
 
 /* ZARF */
-.zarf{
-width:280px;
-height:180px;
+.envelope{
+width:300px;
 margin:auto;
-position:relative;
 cursor:pointer;
 }
-
-.zarf-alt{
-position:absolute;
-width:100%;
-height:100%;
+.env-body{
 background:white;
 border-radius:10px;
-z-index:1;
+height:220px;
+position:relative;
+overflow:hidden;
 }
-
-.zarf-ust{
+.env-flap{
 position:absolute;
 width:100%;
 height:100%;
 background:white;
-clip-path:polygon(0 0,100% 0,50% 50%);
+clip-path:polygon(0 0,100% 0,50% 55%);
 transition:0.6s;
-z-index:2;
+transform-origin:top;
 }
-
-.mektup{
+.letter{
 position:absolute;
-bottom:-100%;
+bottom:-150px;
 left:5%;
 width:90%;
 background:#ffe4e1;
@@ -83,6 +71,34 @@ border-radius:10px;
 transition:0.6s;
 color:#0b1a4a;
 text-align:left;
+}
+.envelope.open .env-flap{
+transform:rotateX(180deg);
+}
+.envelope.open .letter{
+bottom:10px;
+}
+
+/* OYUN */
+.board{
+display:grid;
+grid-template-columns:repeat(8,1fr);
+gap:4px;
+width:320px;
+margin:auto;
+}
+.cell{
+background:#eee;
+aspect-ratio:1;
+position:relative;
+border-radius:6px;
+cursor:pointer;
+}
+.cell img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 /* BUTON */
@@ -95,185 +111,108 @@ color:white;
 cursor:pointer;
 margin-top:10px;
 }
-
-/* OYUN MODAL */
-#oyunModal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-display:none;
-justify-content:center;
-align-items:center;
-}
-
-.modal-icerik{
-background:white;
-padding:20px;
-border-radius:20px;
-}
-
-/* SNAKE */
-canvas{
-background:black;
-}
-
-/* NOT */
-textarea{
-width:90%;
-height:120px;
-border-radius:10px;
-padding:10px;
-}
 </style>
 </head>
 
 <body>
 
-<h1>Bizim Hikayemizz</h1>
-
-<div class="kutu">
-<h2>Fotoğraflar</h2>
-<div class="foto-container">
-<img src="Biz/Foto1.jpeg">
-<img src="Biz/Foto2.jpeg">
-<img src="Biz/Foto3.jpeg">
-<img src="Biz/Foto4.jpeg">
-<img src="Biz/Foto5.jpeg">
-<img src="Biz/Foto6.jpeg">
-<img src="Biz/Foto7.jpeg">
-<img src="Biz/Foto8.jpeg">
-<img src="Biz/Foto9.jpeg">
-<img src="Biz/Foto10.jpeg">
-
-  
-</div>
+<!-- GİRİŞ -->
+<div id="giris">
+<h2>Şifre</h2>
+<input type="password" id="sifre" onkeydown="if(event.key==='Enter') kontrol()">
+<br><br>
+<button onclick="kontrol()">Giriş</button>
 </div>
 
+<!-- SİTE -->
+<div id="site" style="display:none;">
+
+<h1>Bizim Hikayemiz ❤️‍🩹</h1>
+
+<!-- SAYAÇ -->
 <div class="kutu">
-<h2>Beraber büyüdüğümüz süre</h2>
+<h2>Kaç gün beraber büyüdük :)</h2>
 <div id="sayac"></div>
 </div>
 
+<!-- ZARF -->
 <div class="kutu">
-<h2>Mektup 💌</h2>
-<div class="zarf" onclick="zarfAc()">
-<div class="zarf-alt"></div>
-<div class="zarf-ust"></div>
-
-<div class="mektup" id="mektup">
+<h2>Mektup</h2>
+<div class="envelope" onclick="toggleEnvelope()">
+<div class="env-body">
+<div class="env-flap"></div>
+<div class="letter">
 Hayatımın Elzemine,<br><br>
 Bitanem öncelikle iyi ki varsın.<br><br>
 Bugün senin kutladığımız ilk doğum günün.<br><br>
-Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen.<br><br>
-Elzemim,<br>
 İçimdeki eksik yanımın en güzel tamamlayıcı parçasısın.<br><br>
-Her sene yanyana kutlayacağız doğuşunu.<br><br>
-Seni çok seviyorum ❤️‍🩹
+Seni çok seviyorum 💙
+</div>
 </div>
 </div>
 </div>
 
+<!-- OYUN -->
 <div class="kutu">
-<button onclick="oyunAc()">🎮 Oyunlara Git</button>
+<h2>Oyun</h2>
+<p>Tıkla ve fotoğrafları aç</p>
+<div class="board" id="board"></div>
 </div>
 
-<div class="kutu">
-<h2>Notlarımız</h2>
-<textarea id="Buraya yaz askimm"></textarea>
-</div>
-
-<div class="kutu">
-<button onclick="muzikCal()">🎵 Müziği Başlat</button>
-<audio id="muzik">
-<source src="muzik.mp3">
-</audio>
-</div>
-
-<!-- OYUN MODAL -->
-<div id="oyunModal">
-<div class="modal-icerik">
-
-<h2>Snake 🐍</h2>
-<canvas id="snake" width="300" height="300"></canvas><br>
-<button onclick="oyunKapat()">Kapat</button>
-
-</div>
 </div>
 
 <script>
 
-// sayaç
-setInterval(()=>{
-let gun=Math.floor((new Date()-new Date("2025-07-11"))/(1000*60*60*24));
+// ŞİFRE
+function kontrol(){
+if(sifre.value==="0537"){
+giris.style.display="none";
+site.style.display="block";
+}else alert("Yanlış şifre balım");
+}
+
+// SAYAÇ
+let baslangic=new Date("2025-07-11");
+function sayac(){
+let now=new Date();
+let gun=Math.floor((now-baslangic)/(1000*60*60*24));
 document.getElementById("sayac").innerText=gun+" ❤️‍🩹";
-},1000);
+}
+setInterval(sayac,1000);
+sayac();
 
-// zarf
-function zarfAc(){
-document.querySelector(".zarf-ust").style.transform="rotateX(180deg)";
-document.getElementById("mektup").style.bottom="10px";
+// ZARF
+function toggleEnvelope(){
+document.querySelector(".envelope").classList.toggle("open");
 }
 
-// not
-let alan=document.getElementById("not");
-alan.value=localStorage.getItem("not")||"";
-alan.oninput=()=>localStorage.setItem("not",alan.value);
+// OYUN
+let boardEl=document.getElementById("board");
+let photo=1;
 
-// müzik
-function muzikCal(){
-document.getElementById("muzik").play();
+for(let i=0;i<64;i++){
+let cell=document.createElement("div");
+cell.className="cell";
+
+cell.onclick=()=>{
+if(cell.innerHTML===""){
+if(photo<=11){
+let img=document.createElement("img");
+img.src="Biz/Foto"+photo+".jpeg";
+cell.appendChild(img);
+photo++;
+}
 }
 
-// modal
-function oyunAc(){
-document.getElementById("oyunModal").style.display="flex";
+if(photo>11){
+setTimeout(()=>{
+document.body.innerHTML="<h1 style='margin-top:40vh'>İyi ki varsın 💙</h1>";
+},500);
 }
-function oyunKapat(){
-document.getElementById("oyunModal").style.display="none";
+};
+
+boardEl.appendChild(cell);
 }
-
-// SNAKE GERÇEK
-let canvas=document.getElementById("snake");
-let ctx=canvas.getContext("2d");
-
-let box=15;
-let snake=[{x:10,y:10}];
-let food={x:5,y:5};
-let dx=1,dy=0;
-
-document.addEventListener("keydown",e=>{
-if(e.key=="ArrowUp"){dx=0;dy=-1;}
-if(e.key=="ArrowDown"){dx=0;dy=1;}
-if(e.key=="ArrowLeft"){dx=-1;dy=0;}
-if(e.key=="ArrowRight"){dx=1;dy=0;}
-});
-
-function draw(){
-ctx.clearRect(0,0,300,300);
-
-snake.forEach(p=>{
-ctx.fillStyle="lime";
-ctx.fillRect(p.x*box,p.y*box,box,box);
-});
-
-ctx.fillStyle="red";
-ctx.fillRect(food.x*box,food.y*box,box,box);
-
-let head={x:snake[0].x+dx,y:snake[0].y+dy};
-
-if(head.x==food.x && head.y==food.y){
-food={x:Math.floor(Math.random()*20),y:Math.floor(Math.random()*20)};
-}else{
-snake.pop();
-}
-
-snake.unshift(head);
-}
-
-setInterval(draw,120);
 
 </script>
 
