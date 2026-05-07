@@ -283,7 +283,10 @@ onkeydown="if(event.key==='Enter') kontrol()">
 <img src="Biz/Foto9.jpeg" onclick="buyut(this.src)">
 <img src="Biz/Foto10.jpeg" onclick="buyut(this.src)">
 <img src="Biz/Foto11.jpeg" onclick="buyut(this.src)">
-
+<img src="Biz/Foto12.jpeg" onclick="buyut(this.src)">
+<img src="Biz/Foto13.jpeg" onclick="buyut(this.src)">
+<img src="Biz/Foto14.jpeg" onclick="buyut(this.src)">
+<img src="Biz/Foto15.jpeg" onclick="buyut(this.src)">
 </div>
 
 </div>
@@ -291,7 +294,7 @@ onkeydown="if(event.key==='Enter') kontrol()">
 <!-- SAYAÇ -->
 <div class="kutu">
 
-<h2>Beraber kaç gün büyüdük?/h2>
+<h2>Beraber kaç gün büyüdük?<h2>
 
 <br>
 
@@ -348,8 +351,8 @@ iyi ki doğdun ❤️‍🩹
 
 <br>
 
-<textarea id="Buraya yaz bitanemm"
-placeholder="Buraya yazdığınız not her iki cihazda da görünür."></textarea>
+<textarea id="not"
+placeholder="Buraya yaz bitanemm"></textarea>
 
 <br><br>
 
@@ -411,7 +414,7 @@ let fark=simdi-baslangic;
 let gun=Math.floor(fark/(1000*60*60*24));
 
 document.getElementById("sayac").innerHTML=
-gun+" gündür beraber büyüdük";
+gun+" ";
 
 }
 
@@ -431,7 +434,7 @@ let not=document.getElementById("not").value;
 
 localStorage.setItem("ortakNot",not);
 
-alert("Not kaydedildi 💙");
+alert("Not kaydedildi 🤍 ");
 
 }
 
