@@ -14,7 +14,7 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#fff7f3,#e8f1ff);
+background:linear-gradient(135deg,#ffe5ec,#ffd6e7);
 min-height:100vh;
 color:#333;
 overflow-x:hidden;
@@ -172,19 +172,6 @@ border-top:110px solid transparent;
 z-index:2;
 }
 
-/* Alt üçgen */
-.alt-ucgen{
-position:absolute;
-bottom:0;
-left:0;
-width:0;
-height:0;
-border-left:210px solid transparent;
-border-right:210px solid transparent;
-border-bottom:140px solid #ffe4ec;
-z-index:1;
-}
-
 .kapak{
 position:absolute;
 top:0;
@@ -193,11 +180,35 @@ width:0%;
 height:0%;
 border-left:210px solid transparent;
 border-right:210px solid transparent;
-border-top:140px solid #ffffff;
+border-top:140px solid #d6ecff;
 transform-origin:top;
 transition:0.7s;
 z-index:5;
 }
+/* Sol kapalı kenar */
+.sol-ucgen{
+position:absolute;
+bottom:0;
+left:0;
+width:0;
+height:0;
+border-left:210px solid #bde0fe;
+border-top:140px solid transparent;
+z-index:2;
+}
+
+/* Sağ kapalı kenar */
+.sag-ucgen{
+position:absolute;
+bottom:0;
+right:0;
+width:0;
+height:0;
+border-right:210px solid #bde0fe;
+border-top:140px solid transparent;
+z-index:2;
+}
+
 
 .kalp{
 position:absolute;
@@ -310,7 +321,7 @@ onkeydown="if(event.key==='Enter') kontrol()">
 <!-- FOTOĞRAFLAR -->
 <div class="kutu">
 
-<h2 style="color:#d6f0ff;">Fotoğraflarımız</h2>
+<h2 style="color:#1f2a44;">Fotoğraflarımız</h2>
 <br>
 
 <div class="galeri">
@@ -337,7 +348,7 @@ onkeydown="if(event.key==='Enter') kontrol()">
 <!-- SAYAÇ -->
 <div class="kutu">
 
-<h2 style="color:#d6f0ff;">Beraber kaç gün büyüdük?<h2>
+<h2 style="color:#1f2a44;">Beraber kaç gün büyüdük?<h2>
 
 <br>
 
@@ -396,7 +407,7 @@ iyi ki doğdun ❤️‍🩹
 <!-- NOT -->
 <div class="kutu">
 
-<h2 style="color:#d6f0ff;">Not bırakınızz :)</h2>
+<h2 style="color:#1f2a44;">Not bırakınızz :)</h2>
 
 <br>
 
