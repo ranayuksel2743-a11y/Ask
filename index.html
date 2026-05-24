@@ -29,7 +29,7 @@ height:100vh;
 }
 
 .giris-kutu{
-background:ffffffcc;
+background:#ffffffcc;
 backdrop-filter:blur(10px);
 padding:40px;
 border-radius:25px;
@@ -37,11 +37,6 @@ width:90%;
 max-width:400px;
 box-shadow:0 15px 40px rgba(0,0,0,0.15);
 text-align:center;
-}
-
-.giris-kutu h1{
-color:#5b6c9e;
-margin-bottom:20px;
 }
 
 input{
@@ -65,7 +60,6 @@ transition:0.3s;
 }
 
 button:hover{
-background:#a9bc99;
 transform:scale(1.03);
 }
 
@@ -84,36 +78,36 @@ margin:20px 0;
 
 .baslik h1{
 font-size:40px;
-color:#9c7b5d;
 }
 
+/* KUTU */
 .kutu{
-background:fffaf3;
+background:#fffaf3;
 padding:25px;
 margin:25px 0;
 border-radius:25px;
 box-shadow:0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* FOTOĞRAF */
-.galeri{
+/* FOTOĞRAFLAR (KÜÇÜLTÜLDÜ) */
+.foto-container{
 display:flex;
 flex-wrap:wrap;
-justify-content:center;
 gap:10px;
+justify-content:center;
 }
 
-.galeri img{
-width:120%;
-height:120px;
+.foto-container img{
+width:90px;
+height:90px;
 object-fit:cover;
-border-radius:15px;
-transition:0.3s;
+border-radius:12px;
 cursor:pointer;
+transition:0.3s;
 }
 
-.galeri img:hover{
-transform:scale(1.05);
+.foto-container img:hover{
+transform:scale(1.08);
 }
 
 /* SAYAÇ */
@@ -122,129 +116,6 @@ font-size:28px;
 text-align:center;
 font-weight:bold;
 color:#ff4d88;
-}
-
-/* ZARF */
-.zarf-container{
-display:flex;
-justify-content:center;
-margin-top:20px;
-}
-
-.zarf{
-position:relative;
-width:420px;
-height:260px;
-cursor:pointer;
-margin:auto;
-}
-
-.zarf-govde{
-position:absolute;
-width:100%;
-height:100%;
-background:#f8f1e7";
-border-radius:18px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-/* Sol üçgen */
-.sol-ucgen{
-position:absolute;
-left:0;
-width:50;
-height:100;
-border-left:170px solid #f3d6de;
-border-top:110px solid transparent;
-clip-path:polygon(0 100%,50% 55%,100%,100%);
-z-index:4;
-}
-
-/* Sağ üçgen */
-.sag-ucgen{
-position:absolute;
-right:0;
-top
-width:0;
-height:0;
-border-right:170px solid #f3d6de;
-border-top:110px solid transparent;
-z-index:2;
-}
-
-.kapak{
-position:absolute;
-top:0;
-left:0;
-width:0%;
-height:0%;
-border-left:210px solid transparent;
-border-right:210px solid transparent;
-border-top:140px solid #d6ecff;
-transform-origin:top;
-transition:0.7s;
-z-index:5;
-}
-/* Sol kapalı kenar */
-.sol-ucgen{
-position:absolute;
-bottom:0;
-left:0;
-width:0;
-height:0;
-border-left:230px solid #bde0fe;
-border-top:170px solid transparent;
-z-index:4;
-}
-
-/* Sağ kapalı kenar */
-.sag-ucgen{
-position:absolute;
-bottom:0;
-right:0;
-width:0;
-height:0;
-border-right:230px solid #bde0fe;
-border-top:170px solid transparent;
-z-index:4;
-}
-
-
-.kalp{
-position:absolute;
-top:12px;
-left:50%;
-transform:translateX(-50%);
-font-size:22px;
-color:#ff4d88;
-z-index:4;
-}
-
-.mektup{
-position:absolute;
-left:50%;
-width:85%;
-bottom:-220px;
-background:#fffafc;
-padding:20px;
-border-radius:18px;
-transition:0.8s;
-z-index:2;
-color:#0b1a4a;
-line-height:1.9;
-font-size:15px
-max-height:240px;
-overflow-y:auto;
-box-shadow:0 8px 20px rgba (0,0,0,0.15);
-}
-
-.zarf.acik .kapak{
-transform:rotateX(180deg);
-}
-
-.zarf.acik .mektup{
-bottom:25px;
-z-index:7;
 }
 
 /* NOT */
@@ -259,19 +130,13 @@ resize:none;
 outline:none;
 }
 
-/* MÜZİK */
-.muzik{
-text-align:center;
-}
-
 /* FOOTER */
 .footer{
 text-align:center;
 margin:40px 0 10px;
-color:#555;
 }
 
-/* MODAL FOTO */
+/* MODAL */
 #modal{
 display:none;
 position:fixed;
@@ -298,7 +163,6 @@ border-radius:20px;
 
 <!-- GİRİŞ -->
 <div id="giris">
-
 <div class="giris-kutu">
 <h1>Bizim Sitemiz</h1>
 
@@ -308,9 +172,7 @@ onkeydown="if(event.key==='Enter') kontrol()">
 <br><br>
 
 <button onclick="kontrol()">Giriş Yap</button>
-
 </div>
-
 </div>
 
 <!-- ANA SİTE -->
@@ -320,13 +182,12 @@ onkeydown="if(event.key==='Enter') kontrol()">
 <h1>Bizim Hikayemiz ❤️‍🩹</h1>
 </div>
 
-<!-- FOTOĞRAFLAR -->
+<!-- FOTO -->
 <div class="kutu">
-
-<h2 style="color:#9c7b5d;">Fotoğraflarımız</h2>
+<h2>Fotoğraflarımız</h2>
 <br>
-<div class="foto-container">
 
+<div class="foto-container">
 <img src="Bizz/Foto1.jpeg" onclick="buyut(this.src)">
 <img src="Bizz/Foto2.jpeg" onclick="buyut(this.src)">
 <img src="Bizz/Foto3.jpeg" onclick="buyut(this.src)">
@@ -344,39 +205,27 @@ onkeydown="if(event.key==='Enter') kontrol()">
 <img src="Bizz/Foto15.jpeg" onclick="buyut(this.src)">
 
 </div>
-
+</div>
 
 <!-- SAYAÇ -->
 <div class="kutu">
-
-<h2 style="color:#9c7b5d;">Beraber kaç gün büyüdük?<h2>
-
+<h2>Beraber kaç gün büyüdük?</h2>
 <br>
-
 <div class="sayac" id="sayac"></div>
-
 </div>
 
-<!-- MEKTUP -->
+<!-- MEKTUP (ZARFSIZ) -->
 <div class="kutu">
 <h2>İçinde yaşattığın küçüğüm'e</h2>
 
-<div class="zarf" onclick="acKapat()">
-
-<div class="kapak"></div>
-
-<div class="sol"></div>
-<div class="sag"></div>
-<div class="alt"></div>
-
-<div class="mektup" id="mektup">
-<p>
+<p style="line-height:1.8; margin-top:15px;">
 
 Hayatımın Elzemine,<br><br>
 
 Bitanem öncelikle iyi ki varsın.<br><br>
 
-Bugün senin kutladığımız ilk doğum günün.
+Bugün senin kutladığımız ilk doğum günün.<br><br>
+
 Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen.<br><br>
 
 Elzemim,<br><br>
@@ -385,45 +234,21 @@ Elzemim,<br><br>
 
 Her sene beraber senin yeniden doğuşunu kutlayacağız.<br><br>
 
-Seni çok seviyorum.
+Seni çok seviyorum.<br>
 İyi ki doğdun, iyi ki benim oldun.
 
 </p>
 </div>
 
-</div>
-</div>
-</div>
-
 <!-- NOT -->
 <div class="kutu">
-
-<h2 style="color:#9c7b5d;">Not bırakınızz :)</h2>
-
+<h2>Not bırak :)</h2>
 <br>
 
-<textarea id="not"
-placeholder="Buraya yaz bitanemm"></textarea>
-
+<textarea id="not"></textarea>
 <br><br>
 
 <button onclick="notKaydet()">Notu Kaydet</button>
-
-</div>
-
-<!-- MÜZİK -->
-<div class="kutu muzik">
-
-<h2>Müzik</h2>
-
-<br>
-
-<button onclick="muzikCal()">🎵 Müziği Başlat</button>
-
-<audio id="muzik">
-<source src="muzik.mp3" type="audio/mpeg">
-</audio>
-
 </div>
 
 <div class="footer">
@@ -432,7 +257,7 @@ Sonsuza kadar 🤍
 
 </div>
 
-<!-- FOTO MODAL -->
+<!-- MODAL -->
 <div id="modal" onclick="kapatModal()">
 <img id="modal-img">
 </div>
@@ -441,7 +266,6 @@ Sonsuza kadar 🤍
 
 /* ŞİFRE */
 function kontrol(){
-
 let sifre=document.getElementById("sifre").value;
 
 if(sifre==="0537"){
@@ -450,73 +274,42 @@ document.getElementById("site").style.display="block";
 }else{
 alert("Şifre yanlış balım");
 }
-
 }
 
 /* SAYAÇ */
 let baslangic=new Date("2025-07-11");
 
 function guncelleSayac(){
-
 let simdi=new Date();
-
 let fark=simdi-baslangic;
-
 let gun=Math.floor(fark/(1000*60*60*24));
-
-document.getElementById("sayac").innerHTML=
-gun+" ";
-
+document.getElementById("sayac").innerHTML=gun+" gün";
 }
 
 setInterval(guncelleSayac,1000);
-
 guncelleSayac();
-
-/* ZARF */
-function zarfAc(){
-document.getElementById("zarf").classList.toggle("acik");
-}
 
 /* NOT */
 function notKaydet(){
-
-let not=document.getElementById("not").value;
-
-localStorage.setItem("ortakNot",not);
-
-alert("Not kaydedildi 🤍 ");
-
+localStorage.setItem("ortakNot",document.getElementById("not").value);
+alert("Not kaydedildi 🤍");
 }
 
 window.onload=function(){
-
 let kayitli=localStorage.getItem("ortakNot");
-
 if(kayitli){
 document.getElementById("not").value=kayitli;
 }
-
 }
 
-/* MÜZİK */
-function muzikCal(){
-document.getElementById("muzik").play();
-}
-
-/* FOTO BÜYÜT */
+/* FOTO */
 function buyut(src){
-
 document.getElementById("modal").style.display="flex";
-
 document.getElementById("modal-img").src=src;
-
 }
 
 function kapatModal(){
-
 document.getElementById("modal").style.display="none";
-
 }
 
 </script>
