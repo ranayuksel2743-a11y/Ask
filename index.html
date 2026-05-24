@@ -222,19 +222,20 @@ z-index:4;
 
 .mektup{
 position:absolute;
-left:5%;
-width:90%;
-bottom:-260px;
+left:50%;
+width:85%;
+bottom:-220px;
 background:#fffafc;
-padding:25px;
+padding:20px;
 border-radius:18px;
-transition:0.7s;
+transition:0.8s;
+z-index:2;
 color:#0b1a4a;
 line-height:1.9;
-font-size:17px
+font-size:15px
 max-height:240px;
 overflow-y:auto;
-box-shadow:0 10px 25px rgba (0,0,0,0.12);
+box-shadow:0 8px 20px rgba (0,0,0,0.15);
 }
 
 .zarf.acik .kapak{
@@ -242,7 +243,8 @@ transform:rotateX(180deg);
 }
 
 .zarf.acik .mektup{
-bottom:15px;
+bottom:25px;
+z-index:7;
 }
 
 /* NOT */
@@ -357,50 +359,40 @@ onkeydown="if(event.key==='Enter') kontrol()">
 
 <!-- MEKTUP -->
 <div class="kutu">
+<h2>İçinde yaşattığın küçüğüm'e</h2>
 
-<h2 style="color:#9c7b5d;">İçinde yaşattığın küçüğüm'e</h2>
-
-<div class="zarf-container">
-
-<div class="zarf" id="zarf" onclick="zarfAc()">
-
-<div class="zarf-govde">
-  
-<div class="alt-ucgen"></div>
-
-<div class="sol-ucgen"></div>
-
-<div class="sag-ucgen"></div>
+<div class="zarf" onclick="acKapat()">
 
 <div class="kapak"></div>
 
-<div class="kalp">❤</div>
+<div class="sol"></div>
+<div class="sag"></div>
+<div class="alt"></div>
 
-<div class="mektup">
+<div class="mektup" id="mektup">
+<p>
 
-<b>Hayatımın Elzemine,</b><br><br>
+Hayatımın Elzemine,<br><br>
 
 Bitanem öncelikle iyi ki varsın.<br><br>
 
 Bugün senin kutladığımız ilk doğum günün.
 Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen.<br><br>
 
-Elzemim,<br>
-İçimdeki eksik yanımın en güzel tamamlayıcı parçasısın.<br><br>
+Elzemim,<br><br>
 
-Her sene beraber senin yeniden doğuşunla benim seninle yaşamamı kutlayacağız.<br><br>
+İçimdeki eksik yanımın en güzel tamamlayıcı parçasısın sen.<br><br>
 
-Seni çok seviyorum,
-iyi ki doğdun ❤️‍🩹
+Her sene beraber senin yeniden doğuşunu kutlayacağız.<br><br>
 
+Seni çok seviyorum.
+İyi ki doğdun, iyi ki benim oldun.
+
+</p>
 </div>
 
 </div>
-
 </div>
-
-</div>
-
 </div>
 
 <!-- NOT -->
