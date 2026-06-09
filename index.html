@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Belilyon'a ve Ranbilyon'a ait.</title>
 
+<!-- FIREBASE (ORTAK NOT İÇİN) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
 <style>
 *{
 margin:0;
@@ -14,7 +18,7 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#dfeee2,#ed7ef);
+background:linear-gradient(135deg,#dfeee2,#eed7ef);
 min-height:100vh;
 color:#9c7b5d;
 overflow-x:hidden;
@@ -89,7 +93,7 @@ border-radius:25px;
 box-shadow:0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* FOTOĞRAFLAR (ESKİ HALİNE GERİ DÖNDÜ) */
+/* FOTO */
 .foto-container{
 display:flex;
 flex-wrap:wrap;
@@ -110,7 +114,7 @@ transition:0.3s;
 transform:scale(1.08);
 }
 
-/* SAYAÇ */
+/* BERABER BÜYÜME */
 .sayac{
 font-size:28px;
 text-align:center;
@@ -118,7 +122,7 @@ font-weight:bold;
 color:#ff4d88;
 }
 
-/* YKS SAYAÇ */
+/* YKS SAYAÇ (RENK EŞİTLENDİ) */
 .countdown-container{
 display:flex;
 justify-content:center;
@@ -128,7 +132,7 @@ margin-top:15px;
 }
 
 .time-box{
-background:#111827;
+background:#ff4d88; /* 👈 SAYAC RENGİYLE AYNI */
 color:white;
 padding:20px;
 border-radius:16px;
@@ -145,7 +149,7 @@ font-weight:bold;
 
 .time-box small{
 font-size:0.9rem;
-opacity:0.8;
+opacity:0.85;
 }
 
 /* NOT */
@@ -199,7 +203,6 @@ border-radius:20px;
 onkeydown="if(event.key==='Enter') kontrol()">
 
 <br><br>
-
 <button onclick="kontrol()">Giriş Yap</button>
 </div>
 </div>
@@ -211,11 +214,10 @@ onkeydown="if(event.key==='Enter') kontrol()">
 <h1>Bizim Hikayemiz ❤️‍🩹</h1>
 </div>
 
-<!-- FOTOĞRAFLAR (15 ADET GERİ GELDİ) -->
+<!-- FOTO 15 ADET -->
 <div class="kutu">
 <h2>Fotoğraflarımız</h2>
 <br>
-
 <div class="foto-container">
 <img src="Bizz/Foto1.jpeg" onclick="buyut(this.src)">
 <img src="Bizz/Foto2.jpeg" onclick="buyut(this.src)">
@@ -254,6 +256,31 @@ onkeydown="if(event.key==='Enter') kontrol()">
 <div class="time-box"><span id="seconds">0</span><small>Saniye</small></div>
 </div>
 </div>
+  
+<div class="kutu">
+<h2>İçinde yaşattığın küçüğüm'e</h2>
+
+<p style="line-height:1.8; margin-top:15px;">
+
+Hayatımın Elzemine,<br><br>
+
+Bitanem öncelikle iyi ki varsın.<br><br>
+
+Bugün senin kutladığımız ilk doğum günün.<br><br>
+
+Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen.<br><br>
+
+Elzemim,<br><br>
+
+İçimdeki eksik yanımın en güzel tamamlayıcı parçasısın sen.<br><br>
+
+Her sene beraber senin yeniden doğuşunu kutlayacağız.<br><br>
+
+Seni çok seviyorum.<br>
+İyi ki doğdun, iyi ki benim oldun.
+
+</p>
+</div>
 
 <!-- NOT -->
 <div class="kutu">
@@ -283,36 +310,19 @@ let sifre=document.getElementById("sifre").value;
 if(sifre==="0537"){
 document.getElementById("giris").style.display="none";
 document.getElementById("site").style.display="block";
-}else{
-alert("Şifre yanlış balım");
 }
+else alert("Şifre yanlış");
 }
 
-/* SAYAÇ */
+/* BERABER SAYAC */
 let baslangic=new Date("2025-07-11");
 
 function guncelleSayac(){
-let simdi=new Date();
-let fark=simdi-baslangic;
-let gun=Math.floor(fark/(1000*60*60*24));
+let gun=Math.floor((new Date()-baslangic)/(1000*60*60*24));
 document.getElementById("sayac").innerHTML=gun+" gün";
 }
-
 setInterval(guncelleSayac,1000);
 guncelleSayac();
-
-/* NOT */
-function notKaydet(){
-localStorage.setItem("ortakNot",document.getElementById("not").value);
-alert("Not kaydedildi 🤍");
-}
-
-window.onload=function(){
-let kayitli=localStorage.getItem("ortakNot");
-if(kayitli){
-document.getElementById("not").value=kayitli;
-}
-}
 
 /* FOTO */
 function buyut(src){
@@ -324,28 +334,39 @@ function kapatModal(){
 document.getElementById("modal").style.display="none";
 }
 
-/* YKS SAYACI */
+/* YKS */
 const examDate = new Date("2026-06-20T10:15:00").getTime();
 
 function updateCountdown(){
-const now = new Date().getTime();
-const distance = examDate - now;
+let now=new Date().getTime();
+let distance=examDate-now;
 
-document.getElementById("days").textContent =
-Math.floor(distance/(1000*60*60*24));
-
-document.getElementById("hours").textContent =
-Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-
-document.getElementById("minutes").textContent =
-Math.floor((distance%(1000*60*60))/(1000*60));
-
-document.getElementById("seconds").textContent =
-Math.floor((distance%(1000*60))/1000);
+document.getElementById("days").textContent=Math.floor(distance/(1000*60*60*24));
+document.getElementById("hours").textContent=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+document.getElementById("minutes").textContent=Math.floor((distance%(1000*60*60))/(1000*60));
+document.getElementById("seconds").textContent=Math.floor((distance%(1000*60))/1000);
 }
 
 setInterval(updateCountdown,1000);
 updateCountdown();
+
+/* NOT - ORTAK (FIREBASE) */
+const firebaseConfig = {
+  databaseURL: "https://yks-not-default-rtdb.firebaseio.com/"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+const notRef = db.ref("ortakNot");
+
+function notKaydet(){
+notRef.set(document.getElementById("not").value);
+}
+
+notRef.on("value",(snap)=>{
+document.getElementById("not").value=snap.val()||"";
+});
 
 </script>
 
