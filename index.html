@@ -89,7 +89,7 @@ border-radius:25px;
 box-shadow:0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* FOTOĞRAFLAR (KÜÇÜLTÜLDÜ) */
+/* FOTOĞRAFLAR (ESKİ HALİNE GERİ DÖNDÜ) */
 .foto-container{
 display:flex;
 flex-wrap:wrap;
@@ -116,6 +116,36 @@ font-size:28px;
 text-align:center;
 font-weight:bold;
 color:#ff4d88;
+}
+
+/* YKS SAYAÇ */
+.countdown-container{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:15px;
+}
+
+.time-box{
+background:#111827;
+color:white;
+padding:20px;
+border-radius:16px;
+min-width:100px;
+text-align:center;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.time-box span{
+display:block;
+font-size:2.2rem;
+font-weight:bold;
+}
+
+.time-box small{
+font-size:0.9rem;
+opacity:0.8;
 }
 
 /* NOT */
@@ -155,7 +185,6 @@ max-width:90%;
 max-height:90%;
 border-radius:20px;
 }
-
 </style>
 </head>
 
@@ -182,7 +211,7 @@ onkeydown="if(event.key==='Enter') kontrol()">
 <h1>Bizim Hikayemiz ❤️‍🩹</h1>
 </div>
 
-<!-- FOTO -->
+<!-- FOTOĞRAFLAR (15 ADET GERİ GELDİ) -->
 <div class="kutu">
 <h2>Fotoğraflarımız</h2>
 <br>
@@ -203,103 +232,34 @@ onkeydown="if(event.key==='Enter') kontrol()">
 <img src="Bizz/Foto13.jpeg" onclick="buyut(this.src)">
 <img src="Bizz/Foto14.jpeg" onclick="buyut(this.src)">
 <img src="Bizz/Foto15.jpeg" onclick="buyut(this.src)">
-
 </div>
 </div>
 
-<!-- SAYAÇ -->
+<!-- BERABER BÜYÜME -->
 <div class="kutu">
 <h2>Beraber kaç gün büyüdük?</h2>
 <br>
 <div class="sayac" id="sayac"></div>
 </div>
 
-<div class="countdown-container">
-    <div class="time-box">
-        <span id="days">0</span>
-        <small>Gün</small>
-    </div>
-
-    <div class="time-box">
-        <span id="hours">0</span>
-        <small>Saat</small>
-    </div>
-
-    <div class="time-box">
-        <span id="minutes">0</span>
-        <small>Dakika</small>
-    </div>
-
-    <div class="time-box">
-        <span id="seconds">0</span>
-        <small>Saniye</small>
-    </div>
-</div>
-
-.countdown-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.time-box {
-    background: #111827;
-    color: white;
-    padding: 20px;
-    border-radius: 16px;
-    min-width: 100px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.time-box span {
-    display: block;
-    font-size: 2.2rem;
-    font-weight: bold;
-}
-
-.time-box small {
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
-  
-
-
-<!-- MEKTUP (ZARFSIZ) -->
+<!-- YKS -->
 <div class="kutu">
-<h2>İçinde yaşattığın küçüğüm'e</h2>
+<h2>YKS'ye Kalan Süre</h2>
+<br>
 
-<p style="line-height:1.8; margin-top:15px;">
-
-Hayatımın Elzemine,<br><br>
-
-Bitanem öncelikle iyi ki varsın.<br><br>
-
-Bugün senin kutladığımız ilk doğum günün.<br><br>
-
-Yıllar sonra benim olmak için doğduğun bu dünyayı benim için eşsiz kılacak kişisin sen.<br><br>
-
-Elzemim,<br><br>
-
-İçimdeki eksik yanımın en güzel tamamlayıcı parçasısın sen.<br><br>
-
-Her sene beraber senin yeniden doğuşunu kutlayacağız.<br><br>
-
-Seni çok seviyorum.<br>
-İyi ki doğdun, iyi ki benim oldun.
-
-</p>
+<div class="countdown-container">
+<div class="time-box"><span id="days">0</span><small>Gün</small></div>
+<div class="time-box"><span id="hours">0</span><small>Saat</small></div>
+<div class="time-box"><span id="minutes">0</span><small>Dakika</small></div>
+<div class="time-box"><span id="seconds">0</span><small>Saniye</small></div>
+</div>
 </div>
 
 <!-- NOT -->
 <div class="kutu">
 <h2>Not bırak :)</h2>
-<br>
-
 <textarea id="not"></textarea>
 <br><br>
-
 <button onclick="notKaydet()">Notu Kaydet</button>
 </div>
 
@@ -364,39 +324,29 @@ function kapatModal(){
 document.getElementById("modal").style.display="none";
 }
 
-<script>
+/* YKS SAYACI */
 const examDate = new Date("2026-06-20T10:15:00").getTime();
 
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = examDate - now;
+function updateCountdown(){
+const now = new Date().getTime();
+const distance = examDate - now;
 
-    if (distance <= 0) {
-        document.querySelector(".countdown-container").innerHTML =
-            "<h2>YKS Başladı! 🎉</h2>";
-        return;
-    }
+document.getElementById("days").textContent =
+Math.floor(distance/(1000*60*60*24));
 
-    document.getElementById("days").textContent =
-        Math.floor(distance / (1000 * 60 * 60 * 24));
+document.getElementById("hours").textContent =
+Math.floor((distance%(1000*60*60*24))/(1000*60*60));
 
-    document.getElementById("hours").textContent =
-        Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+document.getElementById("minutes").textContent =
+Math.floor((distance%(1000*60*60))/(1000*60));
 
-    document.getElementById("minutes").textContent =
-        Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-    document.getElementById("seconds").textContent =
-        Math.floor((distance % (1000 * 60)) / 1000);
+document.getElementById("seconds").textContent =
+Math.floor((distance%(1000*60))/1000);
 }
 
+setInterval(updateCountdown,1000);
 updateCountdown();
-setInterval(updateCountdown, 1000);
-</script>
 
-
-
-  
 </script>
 
 </body>
