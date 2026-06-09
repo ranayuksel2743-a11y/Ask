@@ -214,6 +214,58 @@ onkeydown="if(event.key==='Enter') kontrol()">
 <div class="sayac" id="sayac"></div>
 </div>
 
+<div class="countdown-container">
+    <div class="time-box">
+        <span id="days">0</span>
+        <small>Gün</small>
+    </div>
+
+    <div class="time-box">
+        <span id="hours">0</span>
+        <small>Saat</small>
+    </div>
+
+    <div class="time-box">
+        <span id="minutes">0</span>
+        <small>Dakika</small>
+    </div>
+
+    <div class="time-box">
+        <span id="seconds">0</span>
+        <small>Saniye</small>
+    </div>
+</div>
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: #111827;
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    min-width: 100px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.time-box span {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.time-box small {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+  
+
+
 <!-- MEKTUP (ZARFSIZ) -->
 <div class="kutu">
 <h2>İçinde yaşattığın küçüğüm'e</h2>
@@ -312,6 +364,39 @@ function kapatModal(){
 document.getElementById("modal").style.display="none";
 }
 
+<script>
+const examDate = new Date("2026-06-20T10:15:00").getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = examDate - now;
+
+    if (distance <= 0) {
+        document.querySelector(".countdown-container").innerHTML =
+            "<h2>YKS Başladı! 🎉</h2>";
+        return;
+    }
+
+    document.getElementById("days").textContent =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    document.getElementById("hours").textContent =
+        Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    document.getElementById("minutes").textContent =
+        Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    document.getElementById("seconds").textContent =
+        Math.floor((distance % (1000 * 60)) / 1000);
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+
+
+
+  
 </script>
 
 </body>
